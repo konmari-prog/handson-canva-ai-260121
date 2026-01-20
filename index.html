@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Canva AI ハンズオンセミナー 配布資料 | 統一された挿絵を作ろう！</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        primary: "#00C4CC",
+        "primary-dark": "#00A3A9",
+        secondary: "#7D2AE8",
+        accent: "#00C4CC",
+        "background-light": "#f8fafa",
+        "background-dark": "#1a1a2e",
+      },
+      fontFamily: {
+        display: ["Inter", "Noto Sans JP", "sans-serif"],
+        sans: ["Inter", "Noto Sans JP", "sans-serif"],
+      },
+    },
+  },
+};
+</script>
+<style>
+body { font-family: 'Inter', 'Noto Sans JP', sans-serif; }
+.hero-gradient {
+  background: linear-gradient(135deg, #7D2AE8 0%, #00C4CC 100%);
+}
+.copy-btn {
+  transition: all 0.2s;
+}
+.copy-btn:hover {
+  transform: scale(1.05);
+}
+.copy-btn.copied {
+  background: #10B981 !important;
+}
+.prompt-box {
+  background: #1e1e1e;
+  border-radius: 0.75rem;
+  position: relative;
+}
+.prompt-box pre {
+  color: #e2e8f0;
+  font-family: 'Noto Sans JP', monospace;
+  font-size: 14px;
+  line-height: 1.8;
+  padding: 1.25rem;
+  padding-right: 4rem;
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+.step-number {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: linear-gradient(135deg, #8B5CF6, #EC4899);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+</style>
+</head>
+<body class="bg-background-light text-slate-800">
+
+<!-- Header -->
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
+<div class="max-w-5xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+  <div class="flex items-center space-x-2">
+    <span class="material-icons-outlined text-primary text-2xl">auto_awesome</span>
+    <span class="font-bold text-lg tracking-tight">Canva AI ハンズオン</span>
+  </div>
+  <nav class="flex items-center space-x-4 text-sm font-medium">
+    <a class="hover:text-primary transition-colors hidden sm:block" href="#flow">流れ</a>
+    <a class="hover:text-primary transition-colors hidden sm:block" href="#canva-ai">Canva AI</a>
+    <a class="hover:text-primary transition-colors hidden sm:block" href="#hands-on-1">実習1</a>
+    <a class="hover:text-primary transition-colors hidden sm:block" href="#hands-on-2">実習2</a>
+    <a class="hover:text-primary transition-colors" href="#terms">利用規約</a>
+  </nav>
+</div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero-gradient py-16 lg:py-24 text-white">
+<div class="max-w-5xl mx-auto px-4 sm:px-6 text-center">
+  <p class="font-bold tracking-widest uppercase mb-3 text-sm text-white/80">Canva AI ハンズオンセミナー</p>
+  <h1 class="text-3xl md:text-5xl font-extrabold mb-4 leading-tight">
+    統一された挿絵を作ろう！<br/>
+    <span class="text-white font-bold">キャラクター画像生成入門</span>
+  </h1>
+  <p class="max-w-2xl mx-auto text-base text-white/90 mb-8 leading-relaxed">
+    絵心ゼロでも大丈夫！AIに指示を出すだけで、<br class="hidden sm:block"/>
+    統一感のあるオリジナルキャラクターが作れるようになります。
+  </p>
+
+  <!-- Flow Diagram -->
+  <div class="mt-8 max-w-3xl mx-auto">
+    <div class="bg-white/10 backdrop-blur rounded-2xl p-6 border border-white/20">
+      <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
+        <div class="bg-white/20 rounded-xl p-4 text-center min-w-[120px]">
+          <span class="material-icons-outlined text-3xl mb-2">brush</span>
+          <p class="text-sm font-bold">ベース画像作成</p>
+          <p class="text-xs text-white/70">マジック生成</p>
+        </div>
+        <span class="material-icons-outlined text-xl rotate-90 md:rotate-0">arrow_forward</span>
+        <div class="bg-white/20 rounded-xl p-4 text-center min-w-[120px]">
+          <span class="material-icons-outlined text-3xl mb-2">table_chart</span>
+          <p class="text-sm font-bold">ポーズ量産</p>
+          <p class="text-xs text-white/70">Canvaシート</p>
+        </div>
+        <span class="material-icons-outlined text-xl rotate-90 md:rotate-0">arrow_forward</span>
+        <div class="bg-accent/80 rounded-xl p-4 text-center min-w-[120px]">
+          <span class="material-icons-outlined text-3xl mb-2">slideshow</span>
+          <p class="text-sm font-bold">スライド配置</p>
+          <p class="text-xs text-white/70">完成!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Before/After Section -->
+<section class="py-16 max-w-5xl mx-auto px-4 sm:px-6">
+<div class="text-center mb-10">
+  <h2 class="text-2xl font-bold mb-3">今日のゴール</h2>
+  <div class="w-16 h-1 bg-primary mx-auto rounded-full"></div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  <div class="bg-slate-100 border-2 border-slate-300 rounded-2xl p-6">
+    <div class="flex items-center gap-2 mb-4">
+      <span class="bg-slate-500 text-white px-3 py-1 rounded-full text-sm font-bold">Before</span>
+    </div>
+    <ul class="space-y-3 text-slate-700">
+      <li class="flex items-start gap-2">
+        <span class="text-slate-500 mt-1">✗</span>
+        <span>毎回イラストのテイストがバラバラ</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="text-slate-500 mt-1">✗</span>
+        <span>いい感じのフリー素材が見つからない</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="text-slate-500 mt-1">✗</span>
+        <span>自分だけのキャラクターが欲しいけど絵心がない</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="bg-primary/10 border-2 border-primary/30 rounded-2xl p-6">
+    <div class="flex items-center gap-2 mb-4">
+      <span class="bg-primary text-white px-3 py-1 rounded-full text-sm font-bold">After</span>
+    </div>
+    <ul class="space-y-3 text-slate-700">
+      <li class="flex items-start gap-2">
+        <span class="text-primary mt-1">✓</span>
+        <span>統一感のあるオリジナルキャラクター！</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="text-primary mt-1">✓</span>
+        <span>シーンに合わせてポーズ違いを量産</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="text-primary mt-1">✓</span>
+        <span>自分だけの挿絵がスライドに並ぶ</span>
+      </li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<!-- Today's Flow Section -->
+<section class="py-16 bg-white" id="flow">
+<div class="max-w-5xl mx-auto px-4 sm:px-6">
+  <div class="text-center mb-10">
+    <h2 class="text-2xl font-bold mb-3">今日の流れ</h2>
+    <p class="text-slate-500">3ステップでオリジナルキャラクターを作成！</p>
+  </div>
+
+  <div class="space-y-6">
+    <div class="flex items-start gap-4 bg-primary/5 rounded-2xl p-6 border border-primary/20">
+      <div class="step-number">1</div>
+      <div>
+        <h3 class="font-bold text-lg mb-1">マジック生成でベース画像を作成</h3>
+        <p class="text-slate-600 text-sm">「イラスト」または「スタンプ」機能で、気に入ったテイストの高品質キャラクターを1枚作ります。</p>
+      </div>
+    </div>
+
+    <div class="flex items-start gap-4 bg-primary/5 rounded-2xl p-6 border border-primary/20">
+      <div class="step-number">2</div>
+      <div>
+        <h3 class="font-bold text-lg mb-1">Canvaシートでポーズ違いを量産</h3>
+        <p class="text-slate-600 text-sm">AIが自動でプロンプトを生成！「Canva AIに聞く」でポーズを変更します。</p>
+      </div>
+    </div>
+
+    <div class="flex items-start gap-4 bg-primary/5 rounded-2xl p-6 border border-primary/20">
+      <div class="step-number">3</div>
+      <div>
+        <h3 class="font-bold text-lg mb-1">スライドに配置して完成</h3>
+        <p class="text-slate-600 text-sm">背景除去してスライドに配置。統一感のある挿絵が完成！</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Canva AI Features Section -->
+<section class="py-16 bg-gradient-to-b from-white to-primary/5" id="canva-ai">
+<div class="max-w-5xl mx-auto px-4 sm:px-6">
+  <div class="text-center mb-10">
+    <h2 class="text-2xl font-bold mb-3">Canva AIでできること</h2>
+    <p class="text-slate-500">マジックスタジオの主な機能</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center">
+          <span class="material-icons-outlined text-2xl">auto_fix_high</span>
+        </div>
+        <div>
+          <h3 class="font-bold">マジック生成（イラスト/スタンプ）</h3>
+          <span class="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">今日使う</span>
+        </div>
+      </div>
+      <p class="text-slate-600 text-sm">日本語プロンプトでイラストを生成。スタンプ機能で可愛い挿絵風イラストが作れます。</p>
+      <p class="text-xs text-slate-400 mt-2">生涯50回無料</p>
+    </div>
+
+    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center">
+          <span class="material-icons-outlined text-2xl">table_chart</span>
+        </div>
+        <div>
+          <h3 class="font-bold">Canvaシート</h3>
+          <span class="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">今日使う</span>
+        </div>
+      </div>
+      <p class="text-slate-600 text-sm">AIでプロンプトを自動生成！「空白セルに入力」でポーズ案を量産できます。</p>
+      <p class="text-xs text-slate-400 mt-2">裏ワザ機能!</p>
+    </div>
+
+    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center">
+          <span class="material-icons-outlined text-2xl">auto_awesome</span>
+        </div>
+        <div>
+          <h3 class="font-bold">Canva AIに聞く</h3>
+          <span class="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">今日使う</span>
+        </div>
+      </div>
+      <p class="text-slate-600 text-sm">画像を選択して「@Canva スタイルの変更」でポーズや表情を変更できます。</p>
+      <p class="text-xs text-slate-400 mt-2">コメント機能から利用</p>
+    </div>
+
+    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-12 h-12 bg-secondary/10 text-secondary rounded-xl flex items-center justify-center">
+          <span class="material-icons-outlined text-2xl">content_cut</span>
+        </div>
+        <div>
+          <h3 class="font-bold">背景除去</h3>
+          <span class="text-xs bg-secondary/10 text-secondary px-2 py-0.5 rounded-full">Pro機能</span>
+        </div>
+      </div>
+      <p class="text-slate-600 text-sm">ワンクリックで背景を透過。キャラクターをスライドに配置する時に便利！</p>
+      <p class="text-xs text-slate-400 mt-2">無料版は回数制限あり</p>
+    </div>
+  </div>
+
+  <div class="bg-primary/5 rounded-xl p-5 border border-primary/20">
+    <div class="flex items-start gap-3">
+      <span class="material-icons-outlined text-primary text-xl mt-0.5">info</span>
+      <div>
+        <p class="text-sm text-slate-700">
+          <strong>公式ページ：</strong>
+          <a href="https://www.canva.com/ja_jp/ai-assistant/" target="_blank" class="underline hover:no-underline">https://www.canva.com/ja_jp/ai-assistant/</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Hands-on 1: Base Character -->
+<section class="py-16 bg-white" id="hands-on-1">
+<div class="max-w-5xl mx-auto px-4 sm:px-6">
+  <div class="text-center mb-10">
+    <span class="bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-bold">実習1</span>
+    <h2 class="text-2xl font-bold mt-3 mb-2">ベースキャラクターを作成</h2>
+    <p class="text-slate-500">マジック生成（イラスト/スタンプ）で挿絵風イラストを生成</p>
+  </div>
+
+  <!-- Steps -->
+  <div class="space-y-6 mb-10">
+    <div class="bg-slate-50 rounded-xl p-5 border border-slate-200">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="bg-primary text-white w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold">1</span>
+        <h4 class="font-bold">Canvaでプレゼンテーションを新規作成</h4>
+      </div>
+      <p class="text-slate-600 text-sm ml-10">ホーム画面から「プレゼンテーション」を選択</p>
+    </div>
+
+    <div class="bg-slate-50 rounded-xl p-5 border border-slate-200">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="bg-primary text-white w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold">2</span>
+        <h4 class="font-bold">左サイドバーから「マジック生成」→「イラスト」を選択</h4>
+      </div>
+      <p class="text-slate-600 text-sm ml-10">シンプルなイラストにしたいときは「スタンプ」がおすすめです</p>
+    </div>
+
+    <div class="bg-slate-50 rounded-xl p-5 border border-slate-200">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="bg-primary text-white w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold">3</span>
+        <h4 class="font-bold">プロンプトを入力して生成</h4>
+      </div>
+      <p class="text-slate-600 text-sm ml-10">下のテンプレートプロンプトをコピーして使ってください</p>
+    </div>
+
+    <div class="bg-slate-50 rounded-xl p-5 border border-slate-200">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="bg-primary text-white w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold">4</span>
+        <h4 class="font-bold">気に入った画像を選んでキャンバスに配置</h4>
+      </div>
+      <p class="text-slate-600 text-sm ml-10">4枚生成されるので、一番気に入ったものを選びましょう</p>
+    </div>
+  </div>
+
+  <!-- Template Prompt -->
+  <div class="mb-8">
+    <h3 class="font-bold text-lg mb-4 flex items-center gap-2">
+      <span class="material-icons-outlined text-primary">content_copy</span>
+      テンプレートプロンプト
+    </h3>
+
+    <div class="prompt-box mb-4">
+      <button onclick="copyPrompt(this, 'prompt1')" class="copy-btn absolute top-3 right-3 bg-primary hover:bg-primary-dark text-white px-3 py-1.5 rounded-lg text-sm font-medium flex items-center gap-1 z-10">
+        <span class="material-icons-outlined text-base">content_copy</span>
+        コピー
+      </button>
+      <pre id="prompt1">かわいいシンプルな挿絵風ベクターイラスト、柔らかい線画、低いポニーテールの女性、ネイビーのブレザー、小さな点の目、優しい笑顔、全身、最小限のディテール、クリーム色の背景</pre>
+    </div>
+
+    <div class="bg-slate-100 rounded-xl p-4 border border-slate-200">
+      <h4 class="font-bold text-slate-700 mb-2 flex items-center gap-2">
+        <span class="material-icons-outlined text-lg">edit</span>
+        カスタマイズのヒント
+      </h4>
+      <div class="text-sm text-slate-600 space-y-1">
+        <p><strong>髪型を変える：</strong>低いポニーテール → ショートヘア / ボブヘア / ロングヘア</p>
+        <p><strong>服装を変える：</strong>ネイビーのブレザー → 白いブラウス / ベージュのカーディガン</p>
+        <p><strong>性別を変える：</strong>女性 → 男性</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- More Prompt Examples -->
+  <div>
+    <h3 class="font-bold text-lg mb-4 flex items-center gap-2">
+      <span class="material-icons-outlined text-secondary">palette</span>
+      プロンプト例いろいろ
+    </h3>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="prompt-box">
+        <button onclick="copyPrompt(this, 'prompt2')" class="copy-btn absolute top-3 right-3 bg-primary hover:bg-primary-dark text-white px-3 py-1.5 rounded-lg text-sm font-medium flex items-center gap-1 z-10">
+          <span class="material-icons-outlined text-base">content_copy</span>
+        </button>
+        <pre id="prompt2">かわいいシンプルな挿絵風ベクターイラスト、柔らかい線画、ショートヘアの男性、白いシャツ、小さな点の目、優しい笑顔、全身、最小限のディテール、クリーム色の背景</pre>
+      </div>
+
+      <div class="prompt-box">
+        <button onclick="copyPrompt(this, 'prompt3')" class="copy-btn absolute top-3 right-3 bg-primary hover:bg-primary-dark text-white px-3 py-1.5 rounded-lg text-sm font-medium flex items-center gap-1 z-10">
+          <span class="material-icons-outlined text-base">content_copy</span>
+        </button>
+        <pre id="prompt3">かわいいシンプルな挿絵風ベクターイラスト、柔らかい線画、ボブヘアの女性、ベージュのカーディガン、小さな点の目、優しい笑顔、全身、最小限のディテール、クリーム色の背景</pre>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Hands-on 2: Pose Variations -->
+<section class="py-16 bg-gradient-to-b from-primary/5 to-white" id="hands-on-2">
+<div class="max-w-5xl mx-auto px-4 sm:px-6">
+  <div class="text-center mb-10">
+    <span class="bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-bold">実習2</span>
+    <h2 class="text-2xl font-bold mt-3 mb-2">ポーズ違いを量産</h2>
+    <p class="text-slate-500">Canvaシート + Canva AIに聞くでポーズを変更</p>
+  </div>
+
+  <!-- Steps -->
+  <div class="space-y-6 mb-10">
+    <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="bg-primary text-white w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold">1</span>
+        <h4 class="font-bold">Canvaシートを新規作成</h4>
+      </div>
+      <p class="text-slate-600 text-sm ml-10">ホーム画面から「Canvaシート」を選択</p>
+    </div>
+
+    <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="bg-primary text-white w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold">2</span>
+        <h4 class="font-bold">ヘッダー行を入力</h4>
+      </div>
+      <div class="ml-10">
+        <div class="overflow-x-auto">
+          <table class="text-sm border-collapse border border-slate-300 rounded-lg overflow-hidden">
+            <tr class="bg-slate-100">
+              <td class="border border-slate-300 px-4 py-2 font-bold">A</td>
+              <td class="border border-slate-300 px-4 py-2 font-bold">B</td>
+            </tr>
+            <tr>
+              <td class="border border-slate-300 px-4 py-2">挿絵ポーズ</td>
+              <td class="border border-slate-300 px-4 py-2">プロンプト</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="bg-primary text-white w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold">3</span>
+        <h4 class="font-bold">A列に欲しいポーズを入力</h4>
+      </div>
+      <div class="ml-10">
+        <p class="text-slate-600 text-sm mb-2">例：「説明している」「ガッツポーズ」「考えている」など</p>
+      </div>
+    </div>
+
+    <div class="bg-primary/10 rounded-xl p-5 border-2 border-primary/30">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="bg-primary text-white w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold">4</span>
+        <h4 class="font-bold text-primary">【裏ワザ】B列の空白セルを選択 →「空白セルに入力」</h4>
+      </div>
+      <p class="text-slate-700 text-sm ml-10">AIが自動でプロンプトを生成してくれます！</p>
+    </div>
+
+    <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="bg-primary text-white w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold">5</span>
+        <h4 class="font-bold">プレゼンに戻り、画像を選択して「Canva AIに聞く」</h4>
+      </div>
+      <p class="text-slate-600 text-sm ml-10">コメント機能から「@Canva スタイルの変更」→ 生成されたプロンプトを入力</p>
+    </div>
+  </div>
+
+  <!-- Pose Examples -->
+  <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+    <h3 class="font-bold text-lg mb-4 flex items-center gap-2">
+      <span class="material-icons-outlined text-primary">directions_run</span>
+      ポーズ・表情の例
+    </h3>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <h4 class="font-bold text-sm text-slate-500 mb-2">ポーズ一覧</h4>
+        <div class="flex flex-wrap gap-2">
+          <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">手を振っている</span>
+          <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">人差し指を立てている</span>
+          <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">ガッツポーズ</span>
+          <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">両手でバツ印</span>
+          <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">お辞儀している</span>
+          <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">腕を組んでいる</span>
+          <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">顎に手を当てている</span>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="font-bold text-sm text-slate-500 mb-2">表情一覧</h4>
+        <div class="flex flex-wrap gap-2">
+          <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm">笑顔</span>
+          <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm">にっこり</span>
+          <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm">真剣な表情</span>
+          <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm">困り顔</span>
+          <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm">驚いた表情</span>
+          <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm">元気いっぱい</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Terms Section -->
+<section class="py-16 bg-slate-800 text-white" id="terms">
+<div class="max-w-5xl mx-auto px-4 sm:px-6">
+  <div class="text-center mb-10">
+    <span class="bg-primary text-white px-4 py-1 rounded-full text-sm font-bold">重要</span>
+    <h2 class="text-2xl font-bold mt-3 mb-2">AI生成画像の利用規約</h2>
+    <p class="text-slate-400">Canvaで生成した画像、どこまで使える？</p>
+  </div>
+
+  <!-- OK/NG Cards -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+    <div class="bg-green-900/30 rounded-2xl p-6 border border-green-500/30">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="material-icons-outlined text-green-400 text-2xl">check_circle</span>
+        <h3 class="font-bold text-lg text-green-400">OKなこと</h3>
+      </div>
+      <ul class="space-y-3 text-slate-300">
+        <li class="flex items-start gap-2">
+          <span class="text-green-400 mt-0.5">✓</span>
+          <span>自社のプレゼン・スライド</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-green-400 mt-0.5">✓</span>
+          <span>自社の広告・SNS投稿</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-green-400 mt-0.5">✓</span>
+          <span>ブログ・Webサイト</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-green-400 mt-0.5">✓</span>
+          <span>YouTube動画・サムネイル</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-green-400 mt-0.5">✓</span>
+          <span>名刺・チラシ・パンフレット</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-green-400 mt-0.5">✓</span>
+          <span>クライアント納品（デザイン込み）</span>
+        </li>
+      </ul>
+      <p class="text-sm text-green-400/80 mt-4 pt-4 border-t border-green-500/20">
+        AI生成画像の所有権はあなたにあります！
+      </p>
+    </div>
+
+    <div class="bg-red-900/30 rounded-2xl p-6 border border-red-500/30">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="material-icons-outlined text-red-400 text-2xl">cancel</span>
+        <h3 class="font-bold text-lg text-red-400">NGなこと</h3>
+      </div>
+      <ul class="space-y-3 text-slate-300">
+        <li class="flex items-start gap-2">
+          <span class="text-red-400 mt-0.5">✗</span>
+          <span>素材として販売・再配布</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-red-400 mt-0.5">✗</span>
+          <span>ロゴ・商標として登録</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-red-400 mt-0.5">✗</span>
+          <span>「人間が作った」と偽る</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-red-400 mt-0.5">✗</span>
+          <span>AI学習データとして使用</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-red-400 mt-0.5">✗</span>
+          <span>既存キャラ・有名人の模倣</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-red-400 mt-0.5">✗</span>
+          <span>POD商品（素材そのまま）</span>
+        </li>
+      </ul>
+      <p class="text-sm text-red-400/80 mt-4 pt-4 border-t border-red-500/20">
+        素材の再ライセンス・商標登録は禁止
+      </p>
+    </div>
+  </div>
+
+  <!-- 3 Important Rules -->
+  <div class="bg-primary/20 rounded-2xl p-6 border border-primary/30 mb-8">
+    <h3 class="font-bold text-lg text-primary mb-4 flex items-center gap-2">
+      <span class="material-icons-outlined">warning</span>
+      覚えておくべき3つのルール
+    </h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="bg-slate-700/50 rounded-xl p-4">
+        <div class="text-2xl font-bold text-primary mb-2">1</div>
+        <p class="text-sm text-slate-300">素材として<br/><strong class="text-white">販売・再配布はNG</strong></p>
+      </div>
+      <div class="bg-slate-700/50 rounded-xl p-4">
+        <div class="text-2xl font-bold text-primary mb-2">2</div>
+        <p class="text-sm text-slate-300">ロゴ・商標として<br/><strong class="text-white">登録はNG</strong></p>
+      </div>
+      <div class="bg-slate-700/50 rounded-xl p-4">
+        <div class="text-2xl font-bold text-primary mb-2">3</div>
+        <p class="text-sm text-slate-300">「AIが作った」ことを<br/><strong class="text-white">隠さない</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Copyright Warning -->
+  <div class="bg-slate-700 rounded-2xl p-6 border border-slate-600">
+    <h3 class="font-bold text-lg mb-4 flex items-center gap-2">
+      <span class="material-icons-outlined text-primary">gavel</span>
+      AI生成全般の著作権について
+    </h3>
+    <div class="space-y-3 text-slate-300 text-sm">
+      <p>
+        <strong class="text-white">既存キャラクター・有名人の模倣は著作権・肖像権侵害になる可能性があります。</strong>
+        「〇〇風」「〇〇っぽい」というプロンプトは避けましょう。
+      </p>
+      <p>
+        <strong class="text-white">同じプロンプトで他の人も似た画像を生成できます。</strong>
+        「独占的な権利」ではないことを理解しておきましょう。
+      </p>
+      <p>
+        <strong class="text-white">AI生成であることを隠さない。</strong>
+        メタデータ（C2PA）の削除は禁止されています。
+      </p>
+    </div>
+  </div>
+
+  <!-- Reference Links -->
+  <div class="mt-6 p-4 bg-slate-700/50 rounded-xl">
+    <p class="text-sm text-slate-400">
+      <strong>参照元（2025年11月時点）：</strong>
+      <a href="https://www.canva.com/policies/terms-of-use/" target="_blank" class="text-primary hover:underline">Terms of Use</a> /
+      <a href="https://www.canva.com/policies/ai-product-terms/" target="_blank" class="text-primary hover:underline">AI Product Terms</a>
+    </p>
+  </div>
+</div>
+</section>
+
+<!-- Free Plan Limits -->
+<section class="py-16 bg-white">
+<div class="max-w-5xl mx-auto px-4 sm:px-6">
+  <div class="text-center mb-10">
+    <h2 class="text-2xl font-bold mb-3">無料プランの制限</h2>
+    <p class="text-slate-500">知っておくと便利！</p>
+  </div>
+
+  <div class="overflow-x-auto">
+    <table class="w-full border-collapse">
+      <thead>
+        <tr class="bg-slate-100">
+          <th class="border border-slate-300 px-4 py-3 text-left font-bold">機能</th>
+          <th class="border border-slate-300 px-4 py-3 text-left font-bold">無料プラン</th>
+          <th class="border border-slate-300 px-4 py-3 text-left font-bold">Proプラン</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="border border-slate-300 px-4 py-3">Dream Lab</td>
+          <td class="border border-slate-300 px-4 py-3"><span class="text-primary font-bold">月20回</span>（毎月リセット）</td>
+          <td class="border border-slate-300 px-4 py-3">月500回</td>
+        </tr>
+        <tr class="bg-slate-50">
+          <td class="border border-slate-300 px-4 py-3">マジック生成</td>
+          <td class="border border-slate-300 px-4 py-3"><span class="text-primary font-bold">生涯50回</span>（リセットなし）</td>
+          <td class="border border-slate-300 px-4 py-3">月500回</td>
+        </tr>
+        <tr>
+          <td class="border border-slate-300 px-4 py-3">背景除去</td>
+          <td class="border border-slate-300 px-4 py-3">回数制限あり</td>
+          <td class="border border-slate-300 px-4 py-3">無制限</td>
+        </tr>
+        <tr class="bg-slate-50">
+          <td class="border border-slate-300 px-4 py-3">Canva AIに聞く</td>
+          <td class="border border-slate-300 px-4 py-3">利用可能</td>
+          <td class="border border-slate-300 px-4 py-3">利用可能</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="mt-6 bg-primary/10 rounded-xl p-5 border border-primary/20">
+    <div class="flex items-start gap-3">
+      <span class="material-icons-outlined text-primary text-xl mt-0.5">lightbulb</span>
+      <p class="text-sm text-slate-700">
+        <strong>Tip：</strong>無料プランでも月20回のDream Lab + 生涯50回のマジック生成があれば、十分にキャラクター作成を楽しめます。コツを掴んで効率的に使いましょう！
+      </p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-16 bg-slate-50">
+<div class="max-w-5xl mx-auto px-4 sm:px-6">
+  <div class="text-center mb-10">
+    <h2 class="text-2xl font-bold mb-3">よくある質問</h2>
+  </div>
+
+  <div class="space-y-4">
+    <div class="bg-white rounded-xl p-5 border border-slate-200">
+      <h4 class="font-bold mb-2 flex items-center gap-2">
+        <span class="material-icons-outlined text-primary">help</span>
+        思ったような画像が生成されません
+      </h4>
+      <p class="text-slate-600 text-sm">プロンプトを具体的にしましょう。「かわいい」だけでなく「小さな点の目」「ピンクのほっぺ」など具体的な特徴を入れると安定します。</p>
+    </div>
+
+    <div class="bg-white rounded-xl p-5 border border-slate-200">
+      <h4 class="font-bold mb-2 flex items-center gap-2">
+        <span class="material-icons-outlined text-primary">help</span>
+        ポーズを変えると別人になってしまいます
+      </h4>
+      <p class="text-slate-600 text-sm">キャラクターの特徴（髪型、服装、目の形など）をプロンプトに必ず含めましょう。「Canva AIに聞く」で変更する時も、元の特徴を維持するよう指示を入れてください。</p>
+    </div>
+
+    <div class="bg-white rounded-xl p-5 border border-slate-200">
+      <h4 class="font-bold mb-2 flex items-center gap-2">
+        <span class="material-icons-outlined text-primary">help</span>
+        「ポリシーに違反している可能性があります」と表示されます
+      </h4>
+      <p class="text-slate-600 text-sm">「女の子」「若い女性」などの表現は避けて、「女性」「人物」などニュートラルな表現を使いましょう。また、有名人や既存キャラクターの名前は使えません。</p>
+    </div>
+
+    <div class="bg-white rounded-xl p-5 border border-slate-200">
+      <h4 class="font-bold mb-2 flex items-center gap-2">
+        <span class="material-icons-outlined text-primary">help</span>
+        商用利用できますか？
+      </h4>
+      <p class="text-slate-600 text-sm">自社の広告・SNS・プレゼンはOKです。ただし、素材としての販売・再配布、ロゴ・商標としての登録はNGです。</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Summary Section -->
+<section class="py-16 hero-gradient text-white">
+<div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+  <h2 class="text-2xl md:text-3xl font-bold mb-6">今日できるようになったこと</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+    <div class="bg-white/20 backdrop-blur rounded-xl p-5">
+      <span class="material-icons-outlined text-3xl mb-2">brush</span>
+      <p class="font-bold">マジック生成で<br/>高品質キャラクターを作れる</p>
+    </div>
+    <div class="bg-white/20 backdrop-blur rounded-xl p-5">
+      <span class="material-icons-outlined text-3xl mb-2">table_chart</span>
+      <p class="font-bold">Canvaシートで<br/>ポーズ違いを量産できる</p>
+    </div>
+    <div class="bg-white/20 backdrop-blur rounded-xl p-5">
+      <span class="material-icons-outlined text-3xl mb-2">slideshow</span>
+      <p class="font-bold">スライドに統一感のある<br/>挿絵を配置できる</p>
+    </div>
+  </div>
+
+  <div class="bg-white/10 rounded-xl p-6 inline-block">
+    <p class="text-lg">
+      <span class="line-through opacity-70">毎回バラバラなイラスト</span>
+      <span class="mx-3">→</span>
+      <span class="font-bold text-white font-bold">統一されたキャラクター！</span>
+    </p>
+  </div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-white py-8 border-t border-slate-200">
+<div class="max-w-5xl mx-auto px-4 sm:px-6">
+  <div class="flex flex-col md:flex-row justify-between items-center">
+    <div class="flex items-center space-x-2 mb-4 md:mb-0">
+      <span class="material-icons-outlined text-primary">auto_awesome</span>
+      <span class="font-bold">Canva AI ハンズオンセミナー</span>
+    </div>
+    <div class="text-slate-500 text-sm">
+      配布資料 | 2026年1月
+    </div>
+  </div>
+</div>
+</footer>
+
+<script>
+function copyPrompt(button, promptId) {
+  const promptElement = document.getElementById(promptId);
+  const text = promptElement.innerText;
+
+  navigator.clipboard.writeText(text).then(() => {
+    button.classList.add('copied');
+    button.innerHTML = '<span class="material-icons-outlined text-base">check</span> コピー完了';
+
+    setTimeout(() => {
+      button.classList.remove('copied');
+      button.innerHTML = '<span class="material-icons-outlined text-base">content_copy</span> コピー';
+    }, 2000);
+  }).catch(err => {
+    console.error('コピーに失敗:', err);
+    alert('コピーに失敗しました');
+  });
+}
+</script>
+
+</body>
+</html>
